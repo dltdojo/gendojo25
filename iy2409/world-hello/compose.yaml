@@ -1,18 +1,28 @@
 #
+# This command can be used to run the service:
 # docker compose run --rm box1
 #
+
 services:
+  # Define a service named 'box1'
   box1:
+    # Use the busybox image version 1.36.1
     image: busybox:1.36.1
+    
+    # Specify the command to run when the container starts
     command:
-      - /bin/sh
-      - -c
+      - /bin/sh  # Use sh to execute the following commands
+      - -c  # Read commands from the following string
       - |
-        env
-        echo
-        date
-        echo
-        sh app.sh
+        env  # Print all environment variables
+        echo  # Print a blank line
+        date  # Print the current date and time
+        echo  # Print another blank line
+        sh app.sh  # Execute the app.sh script
+    
+    # Set the working directory inside the container
     working_dir: /hello
+    
+    # Mount the local app.sh file into the container
     volumes:
-      - ./app.sh:/hello/app.sh:ro
+      - ./app.sh:/hello/app.sh:ro  # ro means read-only
