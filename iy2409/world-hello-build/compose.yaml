@@ -1,0 +1,37 @@
+#
+# This command can be used to run the service:
+# docker compose run --rm box1
+#
+
+services:
+  # Define a service named 'box1'
+  box1:
+    # Build instructions for the container image
+    build:
+      # Context for the build, use current directory
+      context: . 
+      # Dockerfile to use for building the image
+      dockerfile: Dockerfile 
+    # Specify the command to run when the container starts
+    command:
+      # Use sh to execute the following commands
+      - /bin/sh  
+      # Read commands from the following string
+      - -c  
+      # The commands to execute within the container
+      - |
+        # Run the hello101.sh script
+        sh hello101.sh
+        # Print an empty line
+        echo
+        # Run the hello102.sh script
+        sh hello102.sh
+        # Print an empty line
+        echo 
+    # Set the working directory inside the container
+    working_dir: /hello
+    # Mount the local app.sh file into the container
+    volumes:
+      # Mount the local hello101.sh file into the container's /hello/hello101.sh
+      # :ro means read-only
+      - ./hello101.sh:/hello/hello101.sh:ro  
