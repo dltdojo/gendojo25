@@ -1,0 +1,14 @@
+services:
+  mytest:
+    image: busybox:1.36.1
+    working_dir: /www
+    volumes:
+      - ./index.html:/www/index.html:ro
+      - ./app.sh:/www/app.sh:ro
+      - ./cgi-app.sh:/www/cgi-bin/cgiapp.sh
+    ports:
+      - 8300:3000
+    command:
+      - /bin/sh
+      - /www/app.sh
+        

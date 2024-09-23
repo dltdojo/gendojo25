@@ -1,0 +1,14 @@
+services:
+  todo101:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #
+    # docker compose run --rm todo101
+    #
+    command: 
+      - /bin/bash
+      - /app/todo.sh
+    working_dir: /app
+    volumes:
+      - ./todo.sh:/app/todo.sh:ro

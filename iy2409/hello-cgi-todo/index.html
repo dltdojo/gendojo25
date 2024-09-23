@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        #taskList {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .action-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <div class="action-group">
+        <input type="text" id="newTask" placeholder="Enter a new task">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+    <textarea id="taskList" readonly></textarea>
+    <div class="action-group">
+        <input type="number" id="completeTaskId" placeholder="Task ID to complete">
+        <button onclick="completeTask()">Complete Task</button>
+    </div>
+    <div class="action-group">
+        <input type="number" id="deleteTaskId" placeholder="Task ID to delete">
+        <button onclick="deleteTask()">Delete Task</button>
+    </div>
+
+    <script>
+        const cgiUrl = '/cgi-bin/todo.sh';
+
+        async function fetchTasks() {
+            try {
+                const response = await fetch(`${cgiUrl}?action=list`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.text();
+                document.getElementById('taskList').value = data;
+            } catch (error) {
+                console.error('Error fetching tasks:', error);
+            }
+        }
+
+        async function addTask() {
+            const newTaskInput = document.getElementById('newTask');
+            const task = newTaskInput.value.trim();
+            if (task) {
+                try {
+                    const response = await fetch(`${cgiUrl}?action=add&task=${encodeURIComponent(task)}`);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    newTaskInput.value = '';
+                    fetchTasks();
+                } catch (error) {
+                    console.error('Error adding task:', error);
+                }
+            }
+        }
+
+        async function completeTask() {
+            const taskId = document.getElementById('completeTaskId').value;
+            if (taskId) {
+                try {
+                    const response = await fetch(`${cgiUrl}?action=complete&task_id=${taskId}`);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    document.getElementById('completeTaskId').value = '';
+                    fetchTasks();
+                } catch (error) {
+                    console.error('Error completing task:', error);
+                }
+            }
+        }
+
+        async function deleteTask() {
+            const taskId = document.getElementById('deleteTaskId').value;
+            if (taskId) {
+                try {
+                    const response = await fetch(`${cgiUrl}?action=delete&task_id=${taskId}`);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    document.getElementById('deleteTaskId').value = '';
+                    fetchTasks();
+                } catch (error) {
+                    console.error('Error deleting task:', error);
+                }
+            }
+        }
+
+        // Initial fetch of tasks
+        fetchTasks();
+    </script>
+</body>
+</html>

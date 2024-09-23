@@ -1,0 +1,14 @@
+services:
+  mytest:
+    build: .
+    ports:
+      - 8300:8300
+    volumes:
+      - ./index.html:/pb/pb_public/index.html:ro
+      - ./main.pb.js:/pb/pb_hooks/main.pb.js:ro
+    command: 
+      - /bin/sh
+      - -c
+      - |
+        ls -alh /pb
+        /pb/pocketbase serve --http=0.0.0.0:8300

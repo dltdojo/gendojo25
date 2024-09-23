@@ -1,0 +1,13 @@
+services:
+  mytest:
+    build: .
+    working_dir: /www
+    volumes:
+      - ./index.html:/www/index.html:ro
+      - ./app.sh:/www/app.sh:ro
+      - ./cgi-todo.sh:/www/cgi-bin/todo.sh
+    ports:
+      - 8300:3000
+    command:
+      - /bin/bash
+      - /www/app.sh
