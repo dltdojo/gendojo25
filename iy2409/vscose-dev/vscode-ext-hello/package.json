@@ -1,0 +1,22 @@
+{
+	"name": "vscode-ext-hello",
+	"description": "Minimal HelloWorld example for VS Code",
+	"version": "0.0.3",
+	"engines": {
+		"vscode": "^1.60.0"
+	},
+	"activationEvents": [],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "vscode-ext-hello.helloWorld999",
+				"title": "Hello World"
+			}
+		]
+	},
+	"scripts": {},
+	"devDependencies": {
+		"@types/vscode": "^1.60.0"
+	}
+}
