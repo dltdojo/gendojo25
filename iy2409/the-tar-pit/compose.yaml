@@ -1,0 +1,16 @@
+# This Docker Compose file defines a Node.js web server.
+#
+# To run the service:
+#   docker compose run --rm box1
+#
+services:
+  box1:
+    image: node:22.9
+    working_dir: /app
+    volumes:
+      - ./the-tar-pit.js:/app/a-program.js:ro
+    command:
+      - /bin/sh
+      - -c
+      - |
+        node a-program.js
