@@ -1,3 +1,10 @@
+---
+title: Hello World Docker Compose Example
+date: 2024-07-27
+description: A simple example demonstrating how to use Docker Compose to run a "hello world" script within a Busybox container.
+keywords: docker, docker compose, busybox, hello-world, shell-script, containerization
+---
+
 # Busybox Hello World Docker Project
 
 This project demonstrates a simple Docker setup using Busybox to run a "Hello World" bash script. It's a minimal example of how to use Docker Compose to create a containerized environment for running shell scripts.

@@ -1,7 +1,13 @@
+---
+title: "Building a Simple Hello World Container with Docker Compose"
+date: 2024-09-27
+description: This project demonstrates building a Docker container using a Dockerfile and Docker Compose to execute two simple shell scripts that print "Hello World" messages.
+keywords: docker, docker compose, containerization, shell-script, busybox
+---
+
 # Docker Compose and Dockerfile Example
 
 This repository demonstrates a simple Docker Compose setup that uses a Dockerfile to build a custom image and runs two shell scripts within a container.
-
 
 ## Files
 

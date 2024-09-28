@@ -32,7 +32,7 @@ The application consists of the following components:
 2. **Build and run the Docker container:**
 
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 3. **Access the application:**

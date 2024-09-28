@@ -1,7 +1,7 @@
 # This Docker Compose file defines a Node.js web server.
 #
 # To run the service:
-#   docker-compose up -d
+#   docker compose up -d
 #
 # To access the service:
 #   http://localhost:8300

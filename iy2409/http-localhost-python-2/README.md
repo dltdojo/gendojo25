@@ -55,7 +55,7 @@ This project demonstrates a simple HTTP server written in Python and deployed us
 3. Run the following command to start the server:
 
    ```
-   docker-compose up
+   docker compose up
    ```
 
 4. Open your web browser and visit `http://localhost:8300` to see the server in action.
@@ -70,7 +70,7 @@ This project demonstrates a simple HTTP server written in Python and deployed us
 
 - You can access the container's shell using:
   ```
-  docker-compose exec box1 bash
+  docker compose exec box1 bash
   ```
 
 - The project includes commented-out instructions for exposing the local webserver via a public domain name with automatic HTTPS using serveo.net.
@@ -80,8 +80,8 @@ This project demonstrates a simple HTTP server written in Python and deployed us
 To modify the server's behavior, edit the `app.py` file. Remember to restart the Docker container after making changes:
 
 ```
-docker-compose down
-docker-compose up --build
+docker compose down
+docker compose up --build
 ```
 
 ## License

@@ -13,14 +13,14 @@ The `compose.yaml` file defines two services:
 
 To run the project, execute the following commands:
 
-1. **Build and start the containers**: `docker-compose up -d`
+1. **Build and start the containers**: `docker compose up -d`
 2. **Access the HTTP server**: Open your browser and navigate to `http://localhost:8300`
 
 ### SSH Tunneling
 
 To get a shell from the `box201` container, you can use the following commands:
 
-1. **Connect to the container using docker-compose exec**: `docker-compose exec box201 bash`
+1. **Connect to the container using docker compose exec**: `docker compose exec box201 bash`
 2. **Establish an SSH tunnel to the `box101` container**: `ssh -R 80:box101:3000 serveo.net`
 3. **Access the `box101` container's HTTP server**: Open your browser and navigate to `https://xxxxxx.serveo.net` (replace `xxxxxx` with the actual domain name provided by `serveo.net`).
 

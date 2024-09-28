@@ -26,7 +26,7 @@ This repository demonstrates a simple PocketBase application using Docker Compos
 
 3. **Build and Run:**
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 4. **Access the Application:**
@@ -35,7 +35,7 @@ This repository demonstrates a simple PocketBase application using Docker Compos
 
 ## Docker Compose Configuration (`compose.yaml`)
 
-The `docker-compose.yaml` file defines the services for the application:
+The `docker compose.yaml` file defines the services for the application:
 
 - **`mytest`:**
     - Builds the PocketBase image using the `Dockerfile`.

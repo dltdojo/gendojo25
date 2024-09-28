@@ -2,7 +2,7 @@
 
 To run the project, execute the following commands:
 
-1. **Build and start the containers**: `docker-compose up -d`
+1. **Build and start the containers**: `docker compose up -d`
 2. **Access the gitpod-openvscode-server**: Open your browser and navigate to `http://localhost:8300/?folder=/home/workspace`
 
 # SSH Tunneling

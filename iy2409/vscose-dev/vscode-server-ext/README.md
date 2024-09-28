@@ -2,18 +2,18 @@
 title: Running OpenVS Code Server with Docker Compose
 date: 2024-09-27
 description: This README explains how to run Gitpod OpenVS Code Server using Docker Compose and provides instructions for accessing it and installing extensions.
-keywords: openvscode-server, docker, docker-compose, vscode, remote development
+keywords: openvscode-server, docker, docker compose, vscode, remote development
 ---
 
 # Running OpenVS Code Server with Docker Compose with shell script inside.
 
-This `docker-compose.yaml` file defines a service for running Gitpod's OpenVS Code Server within a Docker container. 
+This `docker compose.yaml` file defines a service for running Gitpod's OpenVS Code Server within a Docker container. 
 
 ## Usage
 
 **1. Running the Container:**
 
-To start the OpenVS Code Server, navigate to the directory containing the `docker-compose.yaml` file and run:
+To start the OpenVS Code Server, navigate to the directory containing the `docker compose.yaml` file and run:
 
 ```bash
 docker compose up -d
@@ -35,7 +35,7 @@ Replace `/home/workspace` with the path to the folder you want to open in VS Cod
 
 **Using the `command` Section:**
 
-The `docker-compose.yaml` file includes a `command` section that allows you to install VS Code extensions when the container starts.  
+The `docker compose.yaml` file includes a `command` section that allows you to install VS Code extensions when the container starts.  
 
 **To install an extension:**
 

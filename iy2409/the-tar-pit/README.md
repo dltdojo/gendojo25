@@ -15,8 +15,8 @@ The code demonstrates the increasing complexity and cost (measured in arbitrary 
 
 | The Mythical           | Man-Month                | The Tar Pit           
 |------------------------|--------------------------|-----------------------
-| a program = m          | product = m * 3            |                       
-| system = m * 3           | systems product <br/> = m * 3 * 3  | Horizontal scaling <br/> = m * 3 * 3 * 10 
+| a program = m          | system = m * 3            |                       
+| product = m * 3        | systems product <br/> = m * 3 * 3  | horizontal scaling <br/> = m * 3 * 3 * 10 
 |                        | vertical scaling <br/> = m * 3 * 3 * 2 | 
 
 Fred Brooks's seminal work, "The Mythical Man-Month," introduced a concept that continues to resonate with software engineers decades later: adding manpower to a late software project makes it later.  This seemingly paradoxical idea stems from the inherent complexity of software development, which is far more than a simple sum of its parts.  The table above attempts to illustrate this complexity by extrapolating Brooks's observations to different scales of software projects, highlighting how effort multiplies, not adds, as we move from individual programs to complex systems and then further amplify them through scaling.
