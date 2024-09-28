@@ -1,3 +1,10 @@
+---
+title: Simple Banking System with SQLite and Docker
+date: 2024-09-27
+description: A basic banking system implemented using SQLite and Docker, providing functionalities like account creation, deposit, withdrawal, transfer, and balance check.
+keywords: sqlite, docker, docker compose, bash, banking, transaction, database, shell script
+---
+
 # Banking101 - Simple Banking System
 
 This project implements a basic banking system using Bash scripting and SQLite. It provides a command-line interface for managing bank accounts, performing transactions, and viewing account information.
