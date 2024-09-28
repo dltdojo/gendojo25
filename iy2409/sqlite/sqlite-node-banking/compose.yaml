@@ -1,0 +1,20 @@
+# 
+# This Docker Compose file defines a Node.js environment for a simple banking application.
+#
+# To run the service:
+#   docker compose run --rm bank-app
+# 
+
+services:
+  bank-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    command: 
+      - /bin/bash
+      - /app/app.sh
+    volumes:
+      - ./banking.js:/app/banking.js:ro 
+      - ./banking.sh:/app/banking.sh:ro
+      - ./app.sh:/app/app.sh:ro
