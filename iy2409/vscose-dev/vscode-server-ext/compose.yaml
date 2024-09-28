@@ -1,0 +1,39 @@
+services:
+  # Run with: 
+  #   docker compose up -d
+  # Access at:
+  #   http://localhost:8300/?folder=/home/workspace
+  gitpod-openvscode-server:
+    image: gitpod/openvscode-server:1.93.1
+    ports:
+      - 8300:3000
+        # To install extensions without rebuilding the image, you can use the command below. 
+        # Note: This will run the installation every time the container starts.
+        # Example:
+        # /home/.openvscode-server/bin/openvscode-server --install-extension=redhat.vscode-yaml
+        # 
+        # To use locally developed extensions that aren't published to the marketplace, 
+        # you'll need to build a custom image with those extensions pre-installed.
+        # 
+        # If you don't need to install or configure anything after gitpod/openvscode-server starts, 
+        # you can remove/comment out the entire entrypoint and command section to let the default 
+        # gitpod/openvscode-server image CMD handle starting the server.
+    entrypoint: sh
+    command:
+      - -c 
+      - |
+        date
+        env
+        id
+        cat <<EOF > /home/workspace/hello.sh
+        #!/bin/bash
+        echo hello world
+        EOF
+        cat /home/workspace/hello.sh
+        #
+        # install-extension here
+        #
+        /home/.openvscode-server/bin/openvscode-server --host 0.0.0.0 --without-connection-token &
+        sleep 3
+        echo "http://localhost:8300/?folder=/home/workspace"
+        wait

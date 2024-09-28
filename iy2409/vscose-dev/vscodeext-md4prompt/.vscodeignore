@@ -1,0 +1,6 @@
+foo-code
+pnpm-lock.yaml
+.gitignore
+Dockerfile
+compose.yaml
+*.md
