@@ -1,0 +1,25 @@
+# 
+# This Docker Compose file defines a Node.js environment for a simple todo application.
+#
+# To run the service:
+#   docker compose run --rm app101
+# 
+
+services:
+  app101:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    #
+    # The flag --experimental-strip-types enables Node. js to run TypeScript files. By default 
+    # Node.js will execute only files that contain no TypeScript features that require 
+    # transformation, such as enums or namespaces.
+    #
+    command: 
+      - node
+      - --experimental-strip-types
+      - index.ts
+    volumes:
+      - ./dao.ts:/app/dao.ts:ro 
+      - ./index.ts:/app/index.ts:ro

@@ -38,11 +38,25 @@ const deleteTask = (id) => {
   return stmt.run(id);
 };
 
+// Function to find a task by ID using SQLite
+const findTaskById = (id) => {
+  const stmt = db.prepare('SELECT * FROM tasks WHERE id = ?');
+  return stmt.get(id); // Use get() to retrieve a single row
+};
+
+// Function to find tasks by title using SQLite (partial match)
+const findTaskByTitle = (keyword) => {
+  const stmt = db.prepare('SELECT * FROM tasks WHERE title LIKE ?');
+  return stmt.all(`%${keyword}%`); // Use LIKE and wildcards for partial match
+};
+
 // Export the DAO functions and a close method to close the database connection
 export default {
     getAllTasks,
     addTask,
     markTaskCompleted,
     deleteTask,
+    findTaskById,
+    findTaskByTitle,
     close: () => db.close() 
 };

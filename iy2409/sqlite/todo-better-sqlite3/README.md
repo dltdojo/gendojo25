@@ -63,7 +63,6 @@ The `tasks` table has the following schema:
 | `completed`| INTEGER | Completion status (0: incomplete, 1: complete) |
 
 
-
 ## Dependencies
 
 - `better-sqlite3`: A fast and simple SQLite3 library for Node.js.
