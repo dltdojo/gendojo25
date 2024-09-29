@@ -1,78 +1,61 @@
 ---
-title: Todo CLI Application with Better SQLite3 and TypeScript
+title: Todo CLI Application with Better-SQLite3 and TypeScript
 date: 2024-10-27
-description: A simple command-line interface (CLI) todo application built with Node.js, TypeScript, and Better SQLite3.  This application demonstrates basic CRUD operations (Create, Read, Update, Delete) for managing tasks.
-keywords: nodejs, typescript, sqlite, better-sqlite3, cli, todo, crud
+description: A command-line interface (CLI) todo application built with Node.js, TypeScript, and Better-SQLite3, demonstrating basic CRUD operations and database interaction.
+keywords: nodejs, typescript, sqlite, better-sqlite3, cli, todo, crud, docker, docker compose
 ---
 
 # Todo CLI Application
 
-This project implements a basic Todo CLI application using Node.js, TypeScript, and Better SQLite3 for data persistence. It allows users to manage their tasks through a simple interactive menu.
+This project implements a simple todo list application using Node.js, TypeScript, and Better-SQLite3 for database management. It provides a command-line interface (CLI) for interacting with the application.
 
 ## Features
 
-- List all tasks
-- Add new tasks
-- Mark tasks as completed
-- Delete tasks
+- **Add tasks:** Add new tasks to the todo list.
+- **List tasks:** View all current tasks, marked with 'x' for completed tasks.
+- **Mark as completed:** Mark a task as completed by its ID.
+- **Delete task:** Delete a task by its ID.
+- **Find task by ID:** Retrieve a specific task by its ID.
+- **Find task by title:** Search for tasks by title (partial matches allowed).
+- **Persistent storage:** Tasks are stored in a SQLite database using Better-SQLite3, ensuring data persistence between sessions.
 
-## Getting Started
+## Running the Application with Docker
 
-### Prerequisites
+This application is designed to run within a Docker container.  Follow these steps:
 
-- Docker: Make sure you have Docker installed on your system.
+1. **Clone the repository:**
+   ```bash
+   git clone <repository_url>
+   ```
 
-### Running the Application
+2. **Navigate to the project directory:**
+   ```bash
+   cd todo-better-sqlite3-ts
+   ```
 
-1. Clone the repository:
+3. **Build and run the Docker container:**
+   ```bash
+   docker compose run --rm app101
+   ```
+   This command builds the image (if necessary), starts the container, and removes it after execution. The `app101` service is defined in the `compose.yaml` file.  Inside the container, the `index.ts` file is executed using Node.js with the `--experimental-strip-types` flag.
 
-```bash
-git clone <repository_url>
-```
 
-2. Navigate to the project directory:
+## Code Structure
 
-```bash
-cd todo-better-sqlite3-ts
-```
+- **`index.ts`:** The main entry point of the application. Handles user interaction via the command line and utilizes the `dao.ts` module for database operations.
+- **`dao.ts`:** The Data Access Object (DAO). Contains functions for interacting with the SQLite database (creating the table, adding, retrieving, updating, and deleting tasks). Uses the `better-sqlite3` library.
+- **`Dockerfile`:** Defines the Docker image for the application, based on Node.js 22.9. Installs project dependencies.
+- **`compose.yaml`:**  Docker Compose file for orchestrating the application's services.  Defines the `app101` service, which builds and runs the application.  Mounts `dao.ts` and `index.ts` as read-only volumes into the container.
+- **`package.json`:**  Contains project metadata and dependencies, including `better-sqlite3`.
 
-3. Build and run the Docker container:
 
-```bash
-docker compose run --rm app101
-```
+## Development
 
-This command will build the Docker image (if not already built) and then run the application within a container. The `--rm` flag automatically removes the container after it exits.
-
-## Usage
-
-Once the application is running, you'll be presented with a menu:
-
-```
---- Todo CLI Menu ---
-1. List all tasks
-2. Add a new task
-3. Mark task as completed
-4. Delete a task
-5. Exit
-Enter your choice: 
-```
-
-Follow the prompts to interact with the application.
-
-## Implementation Details
-
-- **Data Access Object (DAO):** The `dao.ts` file provides an abstraction layer for interacting with the SQLite database using Better SQLite3. It handles database initialization, and provides functions for CRUD operations on tasks.
-
-- **Command-line Interface:** The `index.ts` file handles user interaction through the command line, using the `readline` module. It displays the menu, takes user input, and calls the appropriate DAO functions.
-
-- **Docker:** The `Dockerfile` and `compose.yaml` files define the Docker environment for the application. The Dockerfile sets up a Node.js environment and installs the required dependencies. The `compose.yaml` file orchestrates the build and run process, mounting the source code into the container.  The `--experimental-strip-types` flag is used in the `compose.yaml` to allow Node.js to run the TypeScript files directly.
-
-- **TypeScript:** The application is written in TypeScript, providing type safety and improved code maintainability.
+The application uses TypeScript for improved type safety and maintainability.  The `Dockerfile` handles the installation of the required dependencies.
 
 ## Future Improvements
 
-- Implement more sophisticated task management features (e.g., due dates, priorities).
-- Add error handling and input validation.
-- Implement unit tests.
-- Explore alternative UI options (e.g., web interface).
+- Implement more sophisticated search functionality.
+- Add support for due dates and priorities.
+- Improve error handling and user feedback.
+- Implement a web-based user interface.
