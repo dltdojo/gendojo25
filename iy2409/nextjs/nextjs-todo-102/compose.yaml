@@ -1,0 +1,20 @@
+# 
+# This Docker Compose file defines a Node.js environment for a simple todo application.
+# To run the service:
+#   docker compose up
+
+services:
+  app101:
+    build:
+      context: . # Use the current directory as the build context
+      dockerfile: Dockerfile # Use the Dockerfile in the current directory
+    working_dir: /app/nextjs-todo102 # Set the working directory inside the container
+    command: 
+      - pnpm
+      - dev
+    volumes:
+      - ./app/page.tsx:/app/nextjs-todo102/app/page.tsx:ro 
+      - ./app/globals.css:/app/nextjs-todo102/app/globals.css:ro 
+      - ./app/todo:/app/nextjs-todo102/app/todo:ro
+    ports:
+      - 3000:3000

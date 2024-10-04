@@ -1,0 +1,19 @@
+# 
+# This Docker Compose file defines a Node.js environment for a simple home pages.
+# To run the service:
+#   docker compose up
+
+services:
+  app101:
+    build:
+      context: . # Use the current directory as the build context
+      dockerfile: Dockerfile # Use the Dockerfile in the current directory
+    working_dir: /app/nextjs-docker-102 # Set the working directory inside the container
+    command: 
+      - pnpm
+      - dev
+    volumes:
+      - ./app/page.tsx:/app/nextjs-docker-102/app/page.tsx:ro 
+      - ./app/foo:/app/nextjs-docker-102/app/foo:ro
+    ports:
+      - 3000:3000
