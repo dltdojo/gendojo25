@@ -8,6 +8,7 @@
     "jsr:@std/assert@^1.0.6": "1.0.6",
     "jsr:@std/data-structures@^1.0.4": "1.0.4",
     "jsr:@std/encoding@0.221": "0.221.0",
+    "jsr:@std/expect@*": "1.0.5",
     "jsr:@std/expect@^1.0.5": "1.0.5",
     "jsr:@std/fmt@0.221": "0.221.0",
     "jsr:@std/fs@0.221": "0.221.0",
@@ -16,6 +17,7 @@
     "jsr:@std/path@0.217": "0.217.0",
     "jsr:@std/path@0.221": "0.221.0",
     "jsr:@std/path@^1.0.6": "1.0.6",
+    "jsr:@std/testing@*": "1.0.3",
     "jsr:@std/testing@^1.0.3": "1.0.3",
     "npm:zod@^3.23.8": "3.23.8"
   },
