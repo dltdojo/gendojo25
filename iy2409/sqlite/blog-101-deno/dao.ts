@@ -1,5 +1,5 @@
 // dao.ts
-import Database from 'libsql';
+import { Database } from "@db/sqlite";
 import { z } from 'zod';
 
 export const postSchema = z.object({
@@ -18,7 +18,6 @@ const postSqliteSchema = z.object({
   updated_at: z.string(),
 });
 
-
 export type Post = z.infer<typeof postSchema>;
 type PostSqlite = z.infer<typeof postSqliteSchema>;
 
@@ -35,7 +34,7 @@ function parsePosts(posts: PostSqlite[]): Post[] {
 }
 
 export class BlogDAO {
-  private db: Database.Database;
+  db: Database;
 
   constructor(dbPath: string) {
     this.db = new Database(dbPath);
@@ -43,7 +42,7 @@ export class BlogDAO {
   }
 
   private initialize() {
-    this.db.pragma('journal_mode = WAL');
+    this.db.exec("pragma journal_mode = WAL");
     this.db.exec(`
       CREATE TABLE IF NOT EXISTS posts (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -86,14 +85,14 @@ export class BlogDAO {
 
   updatePost(id: number, title: string, content: string): boolean {
     const stmt = this.db.prepare('UPDATE posts SET title = ?, content = ? WHERE id = ?');
-    const result = stmt.run(title, content, id);
-    return result.changes > 0;
+    const changes = stmt.run(title, content, id);
+    return changes > 0;
   }
 
   deletePost(id: number): boolean {
     const stmt = this.db.prepare('DELETE FROM posts WHERE id = ?');
-    const result = stmt.run(id);
-    return result.changes > 0;
+    const changes = stmt.run(id);
+    return changes > 0;
   }
 
   close() {

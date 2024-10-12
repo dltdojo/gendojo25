@@ -70,8 +70,8 @@ class TaskDAO {
         title TEXT NOT NULL,
         completed INTEGER DEFAULT 0,
         tags JSON,
-        created_at DATETIME DEFAULT (unixepoch('now','subsec')),
-        updated_at DATETIME DEFAULT (unixepoch('now','subsec'))
+        created_at DATETIME DEFAULT current_timestamp,
+        updated_at DATETIME DEFAULT current_timestamp
       )
     `);
 
@@ -80,7 +80,7 @@ class TaskDAO {
       CREATE TRIGGER IF NOT EXISTS update_task_timestamp 
       AFTER UPDATE ON tasks
       BEGIN
-        UPDATE tasks SET updated_at = (unixepoch('now','subsec'))
+        UPDATE tasks SET updated_at = current_timestamp
         WHERE id = NEW.id;
       END;
     `);

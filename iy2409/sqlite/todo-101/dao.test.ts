@@ -29,10 +29,9 @@ describe('TaskDAO', () => {
     expect(task.id).toBeGreaterThan(0);
   });
 
-
   it('should get all tasks', async () => {
     dao.addTask('Task 1');
-    await delay(10);
+    await delay(1000);
     dao.addTask('Task 2');
     const tasks = dao.getAllTasks();
     expect(tasks.length).toBe(2);
@@ -134,6 +133,15 @@ describe('TaskDAO', () => {
         expect(retrievedTaskAfterUpdate.updatedAt.getTime()).toBeGreaterThan(retrievedTaskBeforeUpdate.updatedAt.getTime());
     }
   });
+
+  it('createdAt and updatedAt should be valid dates', () => {
+    const task = dao.addTask('Test Title');
+    const now = new Date();
+    expect(task.createdAt.getFullYear()).toBe(now.getFullYear()); // Check the year
+    expect(task.updatedAt.getFullYear()).toBe(now.getFullYear()); // Check the year
+    expect(task.createdAt.getTime()).toBeGreaterThan(0);  // Ensure it's not epoch time
+    expect(task.updatedAt.getTime()).toBeGreaterThan(0);  // Ensure it's not epoch time
+});
 
 
 });

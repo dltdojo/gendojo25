@@ -1,6 +1,7 @@
 // dao.test.ts
 import { BlogDAO, Post, postSchema } from './dao.ts';
-import { it, describe, beforeEach, afterEach, expect } from 'vitest'
+import { describe, it , beforeEach, afterEach} from "jsr:@std/testing/bdd";
+import { expect } from "jsr:@std/expect";
 
 function delay(time: number) {
     return new Promise(resolve => setTimeout(resolve, time));
@@ -77,12 +78,12 @@ describe('BlogDAO', () => {
     });
 
     it('createdAt and updatedAt should be valid dates', () => {
-        const post = dao.createPost('Test Title', 'Test Content');
-        const now = new Date();
-        expect(post.createdAt.getFullYear()).toBe(now.getFullYear()); // Check the year
-        expect(post.updatedAt.getFullYear()).toBe(now.getFullYear()); // Check the year
-        expect(post.createdAt.getTime()).toBeGreaterThan(0);  // Ensure it's not epoch time
-        expect(post.updatedAt.getTime()).toBeGreaterThan(0);  // Ensure it's not epoch time
-    });
+      const post = dao.createPost('Test Title', 'Test Content');
+      const now = new Date();
+      expect(post.createdAt.getFullYear()).toBe(now.getFullYear()); // Check the year
+      expect(post.updatedAt.getFullYear()).toBe(now.getFullYear()); // Check the year
+      expect(post.createdAt.getTime()).toBeGreaterThan(1000);  // Ensure it's not epoch time
+      expect(post.updatedAt.getTime()).toBeGreaterThan(1000);  // Ensure it's not epoch time
+  });
 });
   
