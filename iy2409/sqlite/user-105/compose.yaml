@@ -1,0 +1,18 @@
+# 
+# This Docker Compose file defines a Node.js environment for a simple todo application.
+# To run the service:
+#   docker compose run --rm app101
+
+services:
+  app101:
+    build:
+      context: . # Use the current directory as the build context
+      dockerfile: Dockerfile # Use the Dockerfile in the current directory
+    working_dir: /app # Set the working directory inside the container
+    command: 
+      - pnpm
+      - cli
+    volumes:
+      - ./dao.ts:/app/dao.ts:ro # Mount dao.ts as read-only
+      - ./index.ts:/app/index.ts:ro # Mount index.ts as read-only
+      - ./authnz.ts:/app/authnz.ts:ro
