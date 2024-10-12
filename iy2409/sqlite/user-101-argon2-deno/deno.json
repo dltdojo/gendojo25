@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "@stdext/crypto": "jsr:@stdext/crypto@^0.0.5",
+    "libsql": "npm:libsql@^0.4.6",
+    "zod": "npm:zod@^3.23.8"
+  }
+}

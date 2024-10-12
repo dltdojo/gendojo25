@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "libsql": "npm:libsql@^0.4.6",
+    "zod": "npm:zod@^3.23.8"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "user-101",
+  "version": "1.0.0",
+  "description": "User Management CLI with SQLite, Node.js, and Docker",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "cli": "node --experimental-strip-types index.ts",
+    "docker": "docker compose run --rm app101"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "argon2": "^0.41.1",
+    "libsql": "^0.4.6",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5"
+  }
+}
