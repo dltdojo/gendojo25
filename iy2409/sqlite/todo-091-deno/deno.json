@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "@db/sqlite": "jsr:@db/sqlite@^0.12.0"
+  },
+  "tasks": {
+    "cli": "deno run -A index.ts",
+    "test": "deno test -A"
+  }
+}
