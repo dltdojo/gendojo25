@@ -1,0 +1,25 @@
+{
+  "name": "@gendojo/fresh2-shadcnui",
+  "version": "2.0.0-alpha.22",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./src/mod.ts"
+  },
+  "publish": {
+    "include": [
+      "src/**/*.ts",
+      "deno.json",
+      "Dockerfile",
+      "*.sh",
+      "README.md"
+    ],
+    "exclude": [
+      "**/*_test.*"
+    ]
+  },
+  "imports": {
+    "@std/cli": "jsr:@std/cli@^1.0.6",
+    "@std/fs": "jsr:@std/fs@^1.0.4",
+    "@std/path": "jsr:@std/path@^1.0.6"
+  }
+}
