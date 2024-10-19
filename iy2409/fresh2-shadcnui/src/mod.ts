@@ -1,14 +1,11 @@
 import { parseArgs } from "@std/cli/parse-args";
-import { initProject } from "./init.ts";
+import { updateFreshProject } from "./init.ts";
 
 const flags = parseArgs(Deno.args, {
-  boolean: ["foo", "help"],
-  default: {
-    foo: null,
-  },
+  boolean: ["help"],
   alias: {
     help: "h",
   },
 });
 
-await initProject(Deno.cwd(), flags._, flags);
+updateFreshProject(Deno.cwd(), flags._ as string[]);

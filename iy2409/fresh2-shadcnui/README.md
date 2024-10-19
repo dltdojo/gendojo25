@@ -1,50 +1,58 @@
 ---
 title: @gendojo/fresh2-shadcnui
 date: 2024-10-18
-description: A Deno module for project initialization.
+description: A Deno module for initializing and updating Fresh projects with Shadcn/UI components.
 keywords: deno, fresh, shadcn/ui, initialization, cli
 ---
 
 # @gendojo/fresh2-shadcnui
 
-This Deno module provides a CLI tool to initialize projects.
+This Deno module provides a CLI tool to initialize and update Fresh projects with pre-configured Shadcn/UI components and a Tailwind CSS setup.
 
 ## Usage
 
-```bash
-deno run --allow-read jsr:@gendojo/fresh2-shadcnui@0.1.0-alpha.1 --foo
-```
+### Initialization
 
-## Options
-
-- `--foo`: A boolean flag. Defaults to `null`.
-- `--help`, `-h`: Show help information.
-
-## API
-
-The module exports a function `initProject` which can be used programmatically.
-
-```typescript
-import { initProject } from "./init.ts";
-
-await initProject(Deno.cwd(), ["hello", "world"], { foo: true });
-```
-
-The `initProject` function takes the following arguments:
-
-- `cwd`: The current working directory. Defaults to `Deno.cwd()`.
-- `input`: An array of strings or numbers representing the inputs.
-- `flags`: An object containing the flags.  Currently supports `foo` (boolean, defaults to `null`).
-
-
-## Development
-
-This project uses Deno.
+To initialize a new Fresh project with Tailwind CSS and VSCode settings, use the following command (replace `your_project_name` with the desired name):
 
 ```bash
-deno task test # Run tests
-deno task fmt  # Format code
-deno task lint # Lint code
+deno run -Ar jsr:@fresh/init@2.0.0-alpha.22 your_project_name --force --tailwind --vscode
+```
+
+### Updating with Shadcn/UI & Tailwind Configuration
+
+After initializing, use this module to add Shadcn/UI components, Tailwind configurations, and utility functions:
+
+```bash
+deno run -A jsr:@gendojo/fresh2-shadcnui your_project_name
+```
+This command will:
+
+- Download specific Shadcn/UI components (Button, Input, Checkbox, Label, Select, Dropdown Menu) and place them in `islands/ui`.
+- Update or create necessary files like `deno.json`, `tailwind.config.ts`, `postcss.config.js`, `eslint.config.mjs`, `lib/utils.ts`, `islands/Counter.tsx`, and `static/styles.css` with pre-configured content.
+
+### Using the CLI (cli.sh)
+
+The provided `cli.sh` script simplifies project management:
+
+```bash
+./cli.sh <project_name> <command>
+```
+
+Available commands:
+
+- `init`: Initializes a new Fresh project (same as the first step above).
+- `update`: Updates the project with Shadcn/UI and configuration (same as the second step above).
+- `start`: Starts the Fresh development server (`deno task dev`).
+- `clean`: Cleans the project by removing `node_modules`, `deno.lock`, and running `deno clean`.
+
+## Docker
+
+A `Dockerfile` is provided for containerized development.
+
+```bash
+docker build -t my-fresh-app .
+docker run --rm -it -p 8000:8000 my-fresh-app
 ```
 
 ## Contributing
