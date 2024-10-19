@@ -1,5 +1,5 @@
 ---
-title: @gendojo/fresh2-shadcnui
+title: "@gendojo/fresh2-shadcnui"
 date: 2024-10-18
 description: A Deno module for initializing and updating Fresh projects with Shadcn/UI components.
 keywords: deno, fresh, shadcn/ui, initialization, cli
