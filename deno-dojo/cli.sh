@@ -5,16 +5,35 @@ PROJECT="${1:-foo}"
 
 # Function to initialize a Deno project
 init_deno() {
-  deno init $PROJECT
+  deno init "$PROJECT"
 }
 
+# Function to update local components (assuming this is the intended purpose)
 update_local() {
-  deno run -A src/mod.ts test-expect $PROJECT
+  if [ -d "$PROJECT" ]; then
+    cd "$PROJECT"
+    deno run -A src/mod.ts test-expect "$PROJECT"
+    cd ..
+  else
+    echo "Project '$PROJECT' not found."
+  fi
 }
+
 
 # Function to initialize a Fresh project
 init_fresh() {
   deno run -Ar jsr:@fresh/init@2.0.0-alpha.22 "$PROJECT" --force --tailwind --vscode
+}
+
+# Function to start the Fresh project
+start_fresh() {
+  if [ -d "$PROJECT" ]; then
+    cd "$PROJECT"
+    deno task start
+    cd ..
+  else
+    echo "Project '$PROJECT' not found."
+  fi
 }
 
 # Function to clean the project
@@ -22,7 +41,7 @@ clean() {
   if [ -d "$PROJECT" ]; then
     cd "$PROJECT"
     rm -rf node_modules
-    rm deno.lock
+    rm -f deno.lock  # -f to avoid error if file doesn't exist
     deno clean
     echo "Project '$PROJECT' cleaned."
     cd ..
@@ -31,13 +50,19 @@ clean() {
   fi
 }
 
-# Parse command-line arguments
+# Parse command-line arguments.  Using a second argument for command.
 case "$2" in
-  init-deno) # Added a specific case for deno init
+  init-deno)
     init_deno
     ;;
-  init-fresh)
+  init-fresh) # Using the descriptive name
     init_fresh
+    ;;
+  update) # Using 'update' as the command for update_local
+    update_local
+    ;;
+  start) # Using 'start' as the command to start the Fresh project
+    start_fresh
     ;;
   clean)
     clean
@@ -45,10 +70,10 @@ case "$2" in
   *)
     echo "Usage: $0 <project_name> <command>"
     echo "Commands:"
-    echo "  init-deno: Initialize a new Deno project" # Added to help message
-    echo "  init: Initialize a new Fresh project"
-    echo "  update: Update Shadcn UI components"
-    echo "  start: Start Fresh 2 dev"
+    echo "  init-deno: Initialize a new Deno project"
+    echo "  init-fresh: Initialize a new Fresh project"
+    echo "  update: Update local components (adjust as needed)"
+    echo "  start: Start the Fresh project"
     echo "  clean: Clean the project"
     exit 1
     ;;
