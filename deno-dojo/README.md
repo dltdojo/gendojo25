@@ -37,8 +37,8 @@ deno run jsr:@gendojo/deno-dojo test-expect my-project
 
 The dojo catalog is located here:
 
-[https://github.com/dltdojo/gendojo25/tree/main/deno-dojo/catalog](https://github.com/dltdojo/gendojo25/tree/main/deno-dojo/catalog)
-
+- [https://github.com/dltdojo/gendojo25/tree/main/deno-dojo/catalog](https://github.com/dltdojo/gendojo25/tree/main/deno-dojo/catalog)
+- [https://jsr.io/@gendojo/deno-dojo/0.0.2/catalog](https://jsr.io/@gendojo/deno-dojo/0.0.2/catalog)
 
 ## Development
 
