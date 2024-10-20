@@ -21,13 +21,13 @@ This CLI tool simplifies creating and updating Deno projects using predefined te
 To update a project with a specific dojo (template), clone this repository and then use the `deno run` command directly with the `src/mod.ts` script or run the CLI from the jsr package registry using `jsr:@gendojo/deno-dojo`.
 
 ```bash
-deno run -A jsr:@gendojo/deno-dojo <dojo-name> <project_directory>
+deno run jsr:@gendojo/deno-dojo <dojo-name> <project_directory>
 ```
 
 For example, to update the project "my-project" with the "test-expect" dojo:
 
 ```bash
-deno run -A jsr:@gendojo/deno-dojo test-expect my-project
+deno run jsr:@gendojo/deno-dojo test-expect my-project
 ```
 
 ## Available Dojos (Templates)

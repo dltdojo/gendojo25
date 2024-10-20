@@ -28,6 +28,7 @@
   "tasks":{
     "dev:init": "deno init foo123",
     "dev:todo-100": "deno run -NRW src/mod.ts todo-100 foo123",
-    "dev:test": "cd foo123; deno task dojo:test"
+    "dev:test": "cd foo123; deno task dojo:test",
+    "jsr:todo-100": "deno run -NRW jsr:@gendojo/deno-dojo todo-100 foo123"
   }
 }
