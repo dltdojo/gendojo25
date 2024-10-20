@@ -67,6 +67,16 @@ const DOJO_CATALOG: { [key: string]: { baseUrl: string; files: string[] } } = {
       "testlib.ts",
     ],
   },
+  "todo-100": {  // Add the new dojo entry
+    baseUrl:
+      "https://raw.githubusercontent.com/dltdojo/gendojo25/main/deno-dojo/catalog/todo-100/",
+    files: [
+      "deno.json",
+      "testlib.ts",
+      "todo-dao.test.ts",
+      "todo-dao.ts",
+    ],
+  },
 };
 
 /**

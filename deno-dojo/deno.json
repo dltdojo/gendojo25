@@ -1,6 +1,6 @@
 {
   "name": "@gendojo/deno-dojo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "Apache-2.0",
   "exports": {
     ".": "./src/mod.ts"
@@ -8,13 +8,15 @@
   "publish": {
     "include": [
       "src/**/*.ts",
+      "catalog/**/*.ts",
+      "catalog/**/*.json",
       "deno.json",
       "Dockerfile",
       "*.sh",
       "README.md"
     ],
     "exclude": [
-      "**/*_test.*"
+      "src/**/*_test.*"
     ]
   },
   "imports": {

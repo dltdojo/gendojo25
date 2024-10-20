@@ -1,0 +1,13 @@
+{
+  "tasks": {
+    "dev": "deno run --watch main.ts",
+    "todo:test": "deno test -ER --allow-ffi"
+  },
+  "imports": {
+    "@db/sqlite": "jsr:@db/sqlite@^0.12.0",
+    "@std/assert": "jsr:@std/assert@1",
+    "@std/expect": "jsr:@std/expect@^1.0.5",
+    "@std/testing": "jsr:@std/testing@^1.0.3",
+    "testlib": "./testlib.ts"
+  }
+}
