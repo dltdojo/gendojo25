@@ -1,10 +1,9 @@
 {
   "tasks": {
     "dev": "deno run --watch main.ts",
-    "test": "deno test"
+    "dojo:test": "deno test"
   },
   "imports": {
-    "@/": "./",
     "testlib": "./testlib.ts",
     "@std/assert": "jsr:@std/assert@1",
     "@std/expect": "jsr:@std/expect@^1.0.5",

@@ -1,5 +1,5 @@
 import { describe, it , expect } from "testlib";
-import { add } from "@/main.ts";
+import { add } from "./main.ts";
 
 describe("add function", () => {
     it("adds two numbers correctly", () => {

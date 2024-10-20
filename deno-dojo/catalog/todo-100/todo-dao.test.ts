@@ -1,4 +1,4 @@
-import { TaskDAO } from "./todo-dao.ts";
+import { TaskDAO } from "@/todo-dao.ts";
 import { afterEach, beforeEach, describe, expect, it } from "testlib";
 
 describe("TaskDAO", () => {
