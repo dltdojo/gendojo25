@@ -1,0 +1,44 @@
+{
+    "test-expect": {
+        "baseUrl": "https://raw.githubusercontent.com/dltdojo/gendojo25/main/deno-dojo/catalog/test-expect/",
+        "files": [
+            "deno.json",
+            "foo_test.ts",
+            "testlib.ts"
+        ]
+    },
+    "todo-100": {
+        "baseUrl": "https://raw.githubusercontent.com/dltdojo/gendojo25/main/deno-dojo/catalog/todo-100/",
+        "files": [
+            "deno.json",
+            "testlib.ts",
+            "todo-dao.test.ts",
+            "todo-dao.ts",
+            "todo.ts",
+            "Dockerfile.dojo",
+            ".dockerignore"
+        ]
+    },
+    "todo-090": {
+        "baseUrl": "https://raw.githubusercontent.com/dltdojo/gendojo25/main/deno-dojo/catalog/todo-090/",
+        "files": [
+            "deno.json",
+            "testlib.ts",
+            "todo-dao.test.ts",
+            "todo-dao.ts",
+            "todo.ts"
+        ]
+    },
+    "blog-100": {
+        "baseUrl": "https://raw.githubusercontent.com/dltdojo/gendojo25/main/deno-dojo/catalog/blog-100/",
+        "files": [
+            "deno.json",
+            "testlib.ts",
+            "blog-dao.test.ts",
+            "blog-dao.ts",
+            "blog.ts",
+            "Dockerfile.dojo",
+            ".dockerignore"
+        ]
+    }
+}

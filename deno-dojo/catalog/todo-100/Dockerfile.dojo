@@ -1,0 +1,15 @@
+FROM denoland/deno:2.0.2
+
+USER deno
+# Set the working directory inside the container
+WORKDIR /app
+
+COPY . .
+
+# jsr can avoid native binary downloads 
+# https://github.com/denodrivers/sqlite3/issues/129
+# Do not fetch native module every time running docker image
+# https://github.com/denodrivers/sqlite3/issues/137
+RUN deno eval --unstable-ffi "import '@db/sqlite'"
+
+CMD [ "deno","task","dojo:run" ]

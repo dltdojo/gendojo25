@@ -21,24 +21,29 @@ This CLI tool simplifies creating and updating Deno projects using predefined te
 To update a project with a specific dojo (template), clone this repository and then use the `deno run` command directly with the `src/mod.ts` script or run the CLI from the jsr package registry using `jsr:@gendojo/deno-dojo`.
 
 ```bash
+# deno init <project_directory>
 deno run jsr:@gendojo/deno-dojo <dojo-name> <project_directory>
 ```
 
 For example, to update the project "my-project" with the "test-expect" dojo:
 
 ```bash
+# deno init my-project
 deno run jsr:@gendojo/deno-dojo test-expect my-project
 ```
 
 ## Available Dojos (Templates)
 
 * **`test-expect`**: A basic setup for testing with `@std/expect`. Includes example tests and helper functions.
-* **`todo-100`**: Provides a starting point for a todo list application, including data access objects (DAO) and tests. Uses an SQLite database.
+* **`todo-090`**: This project demonstrates a simple to-do list application built using Deno and Deno KV. It showcases basic CRUD operations using a Data Access Object (DAO) pattern.
+* **`todo-100`**: This project demonstrates a simple to-do list application built using Deno and SQLite. It showcases basic CRUD operations using a Data Access Object (DAO) pattern.
+* **`blog-100`**: A simple command-line interface (CLI) blog application built with Deno, demonstrating persistent storage with SQLite.
 
 The dojo catalog is located here:
 
+- [https://jsr.io/@gendojo/deno-dojo/catalog](https://jsr.io/@gendojo/deno-dojo/0.0.3/catalog)
 - [https://github.com/dltdojo/gendojo25/tree/main/deno-dojo/catalog](https://github.com/dltdojo/gendojo25/tree/main/deno-dojo/catalog)
-- [https://jsr.io/@gendojo/deno-dojo/0.0.2/catalog](https://jsr.io/@gendojo/deno-dojo/0.0.2/catalog)
+
 
 ## Development
 

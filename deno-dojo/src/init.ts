@@ -1,5 +1,15 @@
 import * as path from "@std/path";
 import { ensureDirSync } from "@std/fs/ensure-dir";
+// Dojo catalog:  Maps dojo names to their base URL and file list.
+import catalogJson from "./catalog.json" with { type: "json" };
+
+interface DojoEntry {
+  baseUrl: string;
+  files: string[];
+}
+
+// Type the catalog using the DojoEntry interface
+const DOJO_CATALOG: Record<string, DojoEntry> = catalogJson;
 
 /**
  * Downloads a file from a given URL and saves it to the specified path.
@@ -27,7 +37,7 @@ async function downloadAndMergeFile(
       const mergedDenoJson = mergeDenoJsonFiles(existingDenoJson, remoteDenoJson);
 
       Deno.writeTextFileSync(outputPath, JSON.stringify(mergedDenoJson, null, 2));
-      console.log(`Merged and wrote deno.json to: ${outputPath}`);
+      // console.log(`Merged and wrote deno.json to: ${outputPath}`);
     } else {
       // Download and save other files
       const file = await Deno.open(outputPath, { write: true, create: true });
@@ -46,7 +56,7 @@ async function downloadAndMergeFile(
  * @param remote The remote deno.json object to merge.
  * @returns The merged deno.json object.
  */
-function mergeDenoJsonFiles(existing: any, remote: any): any {
+export function mergeDenoJsonFiles(existing: any, remote: any): any {
   const merged = { ...existing, ...remote };
 
   // Merge tasks and imports objects instead of overwriting
@@ -56,28 +66,7 @@ function mergeDenoJsonFiles(existing: any, remote: any): any {
   return merged;
 }
 
-// Dojo catalog:  Maps dojo names to their base URL and file list.
-const DOJO_CATALOG: { [key: string]: { baseUrl: string; files: string[] } } = {
-  "test-expect": {
-    baseUrl:
-      "https://raw.githubusercontent.com/dltdojo/gendojo25/main/deno-dojo/catalog/test-expect/",
-    files: [
-      "deno.json",
-      "foo_test.ts",
-      "testlib.ts",
-    ],
-  },
-  "todo-100": {  // Add the new dojo entry
-    baseUrl:
-      "https://raw.githubusercontent.com/dltdojo/gendojo25/main/deno-dojo/catalog/todo-100/",
-    files: [
-      "deno.json",
-      "testlib.ts",
-      "todo-dao.test.ts",
-      "todo-dao.ts",
-    ],
-  },
-};
+
 
 /**
  * Downloads the files for a specified dojo to the given output directory.
@@ -86,8 +75,8 @@ const DOJO_CATALOG: { [key: string]: { baseUrl: string; files: string[] } } = {
  * @param outputDir The local directory where the files should be saved.
  * @throws {Error} If the dojo is not found in the catalog.
  */
-async function downloadDojo(dojoName: string, outputDir: string) {
-  const dojo = DOJO_CATALOG[dojoName];
+export async function downloadDojo(dojoName: string, outputDir: string, catalog: any = DOJO_CATALOG) {
+  const dojo: DojoEntry = catalog[dojoName];
 
   if (!dojo) {
     throw new Error(`Dojo "${dojoName}" not found in the catalog.`);
@@ -101,7 +90,7 @@ async function downloadDojo(dojoName: string, outputDir: string) {
 
     try {
       await downloadAndMergeFile(url, outputFile);
-      console.log(`Downloaded: ${url}`);
+      // console.log(`Downloaded: ${url} to ${outputFile}`);
     } catch (error) {
       console.error(`Error downloading ${url}:`, error);
     }

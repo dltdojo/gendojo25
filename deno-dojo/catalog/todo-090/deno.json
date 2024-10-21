@@ -1,17 +1,16 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts",
-    "dojo:test": "deno test -RWEN --allow-ffi --reporter=junit",
-    "dojo:run": "deno run -RWEN --allow-ffi todo.ts",
+    "dojo:test": "deno test -RW --unstable-kv --reporter=junit",
+    "dojo:run": "deno run -RW --unstable-kv todo.ts",
     "dojod:build": "docker build -f Dockerfile.dojo -t dojo-foo .",
     "dojod:run": "docker run --rm -it dojo-foo"
   },
   "imports": {
-    "@db/sqlite": "jsr:@db/sqlite@^0.12.0",
+    "@/": "./",
     "@std/assert": "jsr:@std/assert@1",
     "@std/expect": "jsr:@std/expect@^1.0.5",
     "@std/testing": "jsr:@std/testing@^1.0.3",
-    "testlib": "./testlib.ts",
-    "@/": "./"
+    "@std/ulid": "jsr:@std/ulid@^1.0.0",
+    "testlib": "./testlib.ts"
   }
 }

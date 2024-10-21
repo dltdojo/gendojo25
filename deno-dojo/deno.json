@@ -1,6 +1,6 @@
 {
   "name": "@gendojo/deno-dojo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "Apache-2.0",
   "exports": {
     ".": "./src/mod.ts"
@@ -11,24 +11,39 @@
       "catalog/**/*.ts",
       "catalog/**/*.json",
       "catalog/**/*.md",
+      "catalog/**/*.dojo",
+      "catalog/**/.dockerignore",
       "deno.json",
       "Dockerfile",
       "*.sh",
       "README.md"
     ],
     "exclude": [
-      "src/**/*_test.*"
+      "src/**/*.test.*"
     ]
   },
   "imports": {
+    "@kesin11/junit2json": "jsr:@kesin11/junit2json@^3.1.12",
+    "@std/assert": "jsr:@std/assert@1",
     "@std/cli": "jsr:@std/cli@^1.0.6",
+    "@std/expect": "jsr:@std/expect@^1.0.5",
     "@std/fs": "jsr:@std/fs@^1.0.4",
-    "@std/path": "jsr:@std/path@^1.0.6"
+    "@std/http": "jsr:@std/http@^1.0.8",
+    "@std/path": "jsr:@std/path@^1.0.6",
+    "@std/testing": "jsr:@std/testing@^1.0.3",
+    "testlib": "./src/testlib.ts"
   },
-  "tasks":{
+  "tasks": {
+    "test": "deno test -RWEN --allow-run",
     "dev:init": "deno init foo123",
     "dev:todo-100": "deno run -NRW src/mod.ts todo-100 foo123",
     "dev:test": "cd foo123; deno task dojo:test",
-    "jsr:todo-100": "deno run -NRW jsr:@gendojo/deno-dojo@0.0.2 todo-100 foo123"
+    "jsr:todo-100": "deno run -NRW jsr:@gendojo/deno-dojo@0.0.3 todo-100 foo123"
+  },
+  "test": {
+    "include": [
+      "src/"
+    ],
+    "exclude": ["catalog/"]
   }
 }

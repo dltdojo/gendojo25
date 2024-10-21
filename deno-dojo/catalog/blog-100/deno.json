@@ -1,8 +1,8 @@
 {
   "tasks": {
     "dev": "deno run --watch main.ts",
-    "dojo:test": "deno test -RWEN --allow-ffi --reporter=junit",
-    "dojo:run": "deno run -RWEN --allow-ffi todo.ts",
+    "dojo:test": "deno test -RWE --allow-ffi --reporter=junit",
+    "dojo:run": "deno run -RWE --allow-ffi blog.ts",
     "dojod:build": "docker build -f Dockerfile.dojo -t dojo-foo .",
     "dojod:run": "docker run --rm -it dojo-foo"
   },

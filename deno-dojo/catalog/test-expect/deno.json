@@ -1,7 +1,7 @@
 {
   "tasks": {
     "dev": "deno run --watch main.ts",
-    "dojo:test": "deno test"
+    "dojo:test": "deno test --reporter=junit"
   },
   "imports": {
     "testlib": "./testlib.ts",
