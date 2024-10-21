@@ -8,6 +8,7 @@
   "publish": {
     "include": [
       "src/**/*.ts",
+      "src/**/*.json",
       "catalog/**/*.ts",
       "catalog/**/*.json",
       "catalog/**/*.md",
@@ -18,9 +19,7 @@
       "*.sh",
       "README.md"
     ],
-    "exclude": [
-      "src/**/*.test.*"
-    ]
+    "exclude": []
   },
   "imports": {
     "@kesin11/junit2json": "jsr:@kesin11/junit2json@^3.1.12",
